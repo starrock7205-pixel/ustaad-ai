@@ -1,0 +1,9 @@
+{
+  "name": "Ustaad - AI Foreman for Electricians",
+  "description": "Mobile-first AI foreman for Indian home electricians. Live voice and vision guidance in Telugu, Hindi, and English with safety gates and verified Skill Passport.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

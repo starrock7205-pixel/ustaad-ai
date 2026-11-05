@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-telugu: 'Noto Sans Telugu', system-ui, sans-serif;
+    --font-hindi: 'Noto Sans Devanagari', system-ui, sans-serif;
+    --font-latin: 'Inter', system-ui, sans-serif;
+    --color-ustaad-yellow: #FFC400;
+  }
+
+  body {
+    font-family: var(--font-telugu), var(--font-hindi), var(--font-latin);
+    background-color: #0b0c0e;
+    color: #f3f4f6;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+/* Custom utilities for high-contrast mobile electricians */
+.touch-target-huge {
+  min-height: 56px;
+  min-width: 56px;
+}
+
+.ustaad-glow {
+  box-shadow: 0 0 25px rgba(255, 196, 0, 0.25);
+}
+
+.ustaad-glow-danger {
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.4);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #14161a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e37;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3e4451;
+}
