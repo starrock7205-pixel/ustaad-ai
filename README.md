@@ -211,3 +211,5 @@ ustaad-ai-platform/
 ## 📄 License & Attribution
 
 Distributed under the **MIT License**. Created for the **Startup Buildathon India 2026**.
+
+PUBLIC LINK :https://ai.studio/apps/00eb7abe-72a3-4bd0-bbd8-8eb22f7f7dc0
