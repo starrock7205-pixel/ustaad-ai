@@ -1,134 +1,213 @@
-[readme_md.md](https://github.com/user-attachments/files/34435327/readme_md.md)
-# Ustaad (ఉస్తాద్ / उस्ताद)
-> **AI-Powered Discovery, Diagnostic, & Business Growth Platform for Informal Vocational Technicians**
+[readme.md](https://github.com/user-attachments/files/34435745/readme_md.1.md)
 
-[![Buildathon Edition](https://img.shields.io/badge/Startup%20Buildathon-India%202026-orange.svg)](https://startupbuildathon.in)
-[![Google AI Edge](https://img.shields.io/badge/Powered%20By-Google%20AI%20%26%20LiteRT-4285F4.svg)](https://ai.google.dev/)
-[![Offline First](https://img.shields.io/badge/Architecture-100%25%20Offline--First-10B981.svg)]()
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+# 🛠️ USTAAD (ఉస్తాద్ / उस्ताद)
 
----
+### *Next-Generation AI Platform for Informal Vocational Technicians & Tradespeople*
 
-## 📌 Executive Overview
+## 📌 Executive Summary
 
-**Ustaad** is a next-generation agentic platform designed to bridge the digital gap for over **150+ million informal skilled workers** (electricians, plumbers, HVAC technicians, mechanics) across India. 
+**Ustaad** is an enterprise-grade agentic AI platform designed to digitize, empower, and scale India's informal vocational workforce. Traditional aggregator platforms commoditize technicians, taking high commissions while offering zero technical or safety support in the field.
 
-While conventional aggregator platforms treat workers as replaceable commodity labor, **Ustaad empowers tradespeople to run their own intelligent digital micro-enterprises**. Combining **Google AI Studio / Gemini Live API** for real-time multilingual diagnostics and **Google AI Edge / LiteRT** for 100% on-device offline operation, Ustaad enables technicians to:
-1. **Get Discovered:** Receive direct localized customer leads without predatory platform commissions.
-2. **Diagnose & Repair:** Access a real-time, hands-free AI field foreman in native languages (Telugu, Hindi, English) with visual safety guardrails.
-3. **Build Verifiable Reputation:** Automatically generate an immutable, verified **Skill Passport** to unlock micro-financing and enterprise contracts.
+**Ustaad flips this paradigm.** It operates as an **AI-powered micro-enterprise engine** on the technician's mobile device, seamlessly handling:
 
----
+1. **Hyper-Local Discovery & CRM:** AI-driven job matching, voice-based customer dispatching, automated smart estimations, and invoicing.
 
-## 🚀 Key Features
+2. **Real-Time Multilingual Field Assistance:** A hands-free visual/voice foreman operating in Telugu, Hindi, and Indian English for on-site troubleshooting.
 
-### 🛠️ 1. Intelligent Job Discovery & Customer Management
-* **Voice-First Request Dispatch:** Local customers can describe problems in native dialects. Ustaad matches jobs to nearby technicians based on domain skill vectors.
-* **Smart Estimation & Invoicing:** Generates itemized, transparent repair quotes and bill summaries in real time via voice prompts.
-* **Customer History & CRM:** Keeps track of customer locations, past repair notes, and warranty logs automatically.
+3. **100% Offline Resilience:** On-device neural execution via Google LiteRT and Gemma open-weights models for signal-dead basements and remote locations.
 
-### 🧠 2. Real-Time AI Field Foreman (Two-Brain Architecture)
-* **Brain 1 (Multimodal Live Guidance):** Uses camera vision and bidirectional audio to guide technicians through complex repairs (e.g., HVAC refrigerant leaks, motor rewinding, circuit board diagnostics).
-* **Brain 2 (Automated Skill Ledger):** Post-repair, Gemini extracts structured JSON logs from the diagnostic stream to create a verified job record with before-and-after visual proof.
-* **Instant Safety Overrides:** Built-in computer vision algorithms detect open 415V lines, ungrounded breakers, or hazardous gas leaks and issue immediate safety halts.
+4. **Verified Digital Reputation:** Automated extraction of structured work logs into immutable "Skill Passports" for micro-credit and enterprise contracting.
 
-### 📡 3. 100% Offline-First (Google AI Edge / LiteRT)
-* **Zero Connectivity Blackout Protection:** Operates in underground electrical vaults or remote job sites with 0% cellular signal using locally embedded **Gemma** open-weights models.
-* **Background Sync Queue:** Automatically syncs completed job passports and financial ledgers to Cloud Firestore when connection is restored.
+## 🏗️ System Architecture & Data Flow
 
----
-
-## 🏗️ Technical Architecture
+Ustaad employs a **Dual-Engine Agentic Pattern** that bridges real-time cloud multimodal capabilities with resilient on-device edge execution.
 
 ```
-                                  +---------------------------------------+
-                                  |         Ustaad Mobile App             |
-                                  +---------------------------------------+
-                                                      |
-                         +----------------------------+----------------------------+
-                         |                                                         |
-         [Online Mode: Google Cloud]                               [Offline Mode: AI Edge]
-                         |                                                         |
-          +--------------v--------------+                           +--------------v--------------+
-          |  Gemini Live API (Speech)   |                           |    Google LiteRT Runtime    |
-          |  Gemini 1.5 Pro (JSON DB)   |                           |  On-Device Gemma Model      |
-          +--------------+--------------+                           +--------------+--------------+
-                         |                                                         |
-                         +----------------------------+----------------------------+
-                                                      |
-                                        +-------------v-------------+
-                                        |  Local SQLite / Firestore |
-                                        +-------------+-------------+
-                                                      |
-                                        +-------------v-------------+
-                                        | Verified Skill Passport   |
-                                        +---------------------------+
++---------------------------------------------------------------------------------------------------+
+|                                     USTAAD MOBILE / WEB CLIENT                                    |
+|  +---------------------------+   +-------------------------------+   +-------------------------+  |
+|  | Customer Discovery & CRM  |   | Multilingual Live Diagnostics |   | Offline Skill Ledger    |  |
+|  +---------------------------+   +-------------------------------+   +-------------------------+  |
++---------------------------------------------------------------------------------------------------+
+                                                 |
+                       +-------------------------+-------------------------+
+                       |                                                   |
+           [NETWORK ONLINE DETECTED]                             [OFFLINE / NO SIGNAL]
+                       |                                                   |
+                       v                                                   v
++---------------------------------------------+   +-------------------------------------------------+
+|             GOOGLE CLOUD PLATFORM           |   |            ON-DEVICE LITERTE ENGINE             |
+|                                             |   |                                                 |
+|  +---------------------------------------+  |   |  +-------------------------------------------+  |
+|  | Gemini Live API (Sub-300ms WebSockets)|  |   |  | Google LiteRT / AICore Runtime            |  |
+|  | - Multilingual Audio Stream (TE/HI/EN)|  |   |  | - On-Device Gemma 2B / 7B Quantized Model|  |
+|  | - Multi-Frame Visual Bounding Boxes   |  |   |  | - Local Computer Vision Rule Guardrails   |  |
+|  +-------------------++------------------+  |   |  +---------------------+---------------------+  |
+|                      ||                     |   |                        |                        |
+|  +-------------------\/------------------+  |   |  +---------------------v---------------------+  |
+|  | Gemini 1.5 Pro / Flash (Parser)       |  |   |  | On-Device SQLite / IndexedDB              |  |
+|  | - Structured JSON Skill Extraction    |  |   |  | - Encrypted Local Storage Cache            |  |
+|  +-------------------+-------------------+  |   +------------------------+------------------------+
+|                      |                      |                            |
++----------------------|----------------------+                            |
+                       |                                                   |
+                       +-------------------------+-------------------------+
+                                                 |
+                                                 v
+                               +-----------------------------------+
+                               |     BACKGROUND SYNC WORKER        |
+                               | (Syncs when network is restored)  |
+                               +-----------------+-----------------+
+                                                 |
+                                                 v
+                               +-----------------------------------+
+                               |     FIRESTORE / SKILL PASSPORT    |
+                               +-----------------------------------+
+
 ```
 
----
+## 🔄 Sequence Diagram: Live Field Diagnostic Session
+
+```
+Technician               Ustaad Client              Google AI Studio / Live API           Firestore DB
+    |                         |                                 |                             |
+    |--- 1. Start Stream ---->|                                 |                             |
+    |    (Camera + Speech)    |--- 2. WebSocket Audio/Video --->|                             |
+    |                         |       Stream (Telugu/Hindi)     |                             |
+    |                         |                                 |                             |
+    |                         |<-- 3. Live Guidance Audio ------|                             |
+    |                         |       + HUD Bounding Boxes      |                             |
+    |                         |                                 |                             |
+    |<-- 4. Audio Instructions|                                 |                             |
+    |    ("Cut main breaker!")|                                 |                             |
+    |                         |                                 |                             |
+    |--- 5. Complete Job ---->|                                 |                             |
+    |                         |--- 6. Post-Session Payload ---->|                             |
+    |                         |       (Audio Transcript + Caps) |                             |
+    |                         |                                 |-- 7. Extract JSON Ledger -->|
+    |                         |<-- 8. Validated JSON Payload ---|                             |
+    |                         |                                                               |
+    |                         |====================== 9. Commit Record =======================>|
+
+```
+
+## 🚀 Key Functional Modules
+
+### 1. 💼 Business Growth & Discovery Suite
+
+* **Voice-First Request Matching:** Local customers record problem descriptions in their dialect. Ustaad converts speech to domain vectors and alerts matching technicians nearby.
+
+* **Instant Smart Quotations:** Technicians state the required materials verbally, and Ustaad compiles a professional, itemized PDF quote instantly.
+
+* **Customer History CRM:** Automatically archives address details, past appliance service logs, and warranty expirations per customer.
+
+### 2. ⚡ Multilingual AI Field Foreman (Live Diagnostics)
+
+* **Visual Fault Isolation:** Uses multimodal vision to detect burnt PCB components, refrigerant leaks, loose terminal block wires, or worn motor bearings.
+
+* **Multilingual Interaction:** Seamlessly switches between **Telugu (తెలుగు)**, **Hindi (हिंदी)**, and **English** based on spoken input.
+
+* **Safety First Guardrails:** Real-time visual classifiers automatically issue loud audio overrides if 415V three-phase lines or ungrounded circuit breakers are detected.
+
+### 3. 📡 100% Offline-First Edge Architecture
+
+* **Zero-Signal Reliability:** Runs on-device via **Google LiteRT** and optimized **Gemma** open-weights models when technicians work in basements or remote rural locations.
+
+* **Smart Reconciliation:** Local SQLite database logs job details offline and pushes background updates to Cloud Firestore once internet connectivity returns.
 
 ## 🛠️ Google AI Stack Integration
 
-| Google Tool / Technology | Role in Ustaad Platform |
-| :--- | :--- |
-| **Google AI Studio** | Rapid ideation, prompt engineering, and safety guardrail testing for regional language voice feeds. |
-| **Google Antigravity** | Agent-first developer environment for scaffolded multi-file architecture and automated testing. |
-| **Google Agent Skills** | Modular domain knowledge packages (`SKILL.md`) for specialized plumbing, electrical, and HVAC procedures. |
-| **Google LiteRT & Gemma** | On-device high-performance inference engine for 100% offline diagnostic execution. |
-| **Gemini Models** | High-reasoning multimodal engine driving live audio-visual diagnosis and structured JSON ledger generation. |
+| Technology | Implementation & Operational Role | 
+| ----- | ----- | 
+| **Google AI Studio** | Used for prompt system instructions, multi-turn dialogue tuning, and regional language edge-case evaluation. | 
+| **Google Antigravity** | Agent-first development environment used for multi-file component scaffolding and automated end-to-end testing. | 
+| **Google Agent Skills** | Domain-specific `SKILL.md` instruction files providing procedures for electrical, HVAC, and plumbing standards. | 
+| **Google LiteRT & Gemma** | On-device high-performance inference engine for 100% offline diagnostic execution without cloud latency. | 
+| **Gemini Models** | Multimodal reasoning engine driving low-latency audio-visual field guidance and structured JSON extraction. | 
 
----
+## 📁 Repository Directory Structure
 
-## 💻 Installation & Quickstart
+```
+ustaad-ai-platform/
+├── .github/                    # CI/CD Workflows & Issue Templates
+├── android/                    # Android Native Wrapper (LiteRT & AICore Bindings)
+├── public/                     # Static Assets, Icons, and PWA Manifest
+├── src/
+│   ├── app/                    # Next.js App Router (Pages & Layouts)
+│   ├── components/             # Reusable UI Components
+│   │   ├── camera/             # Camera Viewfinder & HUD Overlay
+│   │   ├── crm/                # Job Discovery & Smart Invoicing Components
+│   │   ├── diagnostics/        # Live Audio Waveform & Transcript Feeds
+│   │   └── passport/           # Digital Skill Passport Cards & Export Modules
+│   ├── core/                   # Core Business & AI Logic
+│   │   ├── ai/                 # Gemini Live API & LiteRT Runtime Wrappers
+│   │   ├── db/                 # Local SQLite / IndexedDB Storage Schemas
+│   │   └── guardrails/         # Safety Rule Overrides & Voltage Classifiers
+│   └── skills/                 # Agent Skill Instruction Modules
+│       ├── electrical_v2.md    # Electrical Safety & Troubleshooting Skill
+│       ├── hvac_v1.md          # Compressor & Refrigerant Diagnostics Skill
+│       └── plumbing_v1.md      # Pressure Systems & Pipe Fitting Skill
+├── .env.example                # Template for Environment Variables
+├── next.config.js              # Next.js & PWA Configuration
+├── package.json                # Project Dependencies & Scripts
+└── README.md                   # Repository Documentation
+
+```
+
+## 💻 Installation & Local Development
 
 ### Prerequisites
-* **Node.js**: v18.x or higher
-* **Android Studio** (for mobile APK builds with AICore/LiteRT bindings)
-* **Google Gemini API Key** (Get key from [Google AI Studio](https://aistudio.google.com/))
 
-### Setup Instructions
+* **Node.js**: `v18.x` or higher
+
+* **npm**: `v9.x` or higher
+
+* **Google Gemini API Key**: Obtainable from [Google AI Studio](https://aistudio.google.com/)
+
+### Quickstart Setup
 
 1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/your-username/ustaad-ai-platform.git
+
+   ```
+   git clone https://github.com/starrock7205-pixel/ustaad-ai-platform.git
    cd ustaad-ai-platform
+   
    ```
 
 2. **Install Dependencies:**
-   ```bash
+
+   ```
    npm install
+   
    ```
 
-3. **Configure Environment Variables:**
-   Create a `.env.local` file in the project root:
-   ```env
-   NEXT_PUBLIC_GEMINI_API_KEY=your_google_ai_studio_api_key
-   NEXT_PUBLIC_OFFLINE_MODE_FALLBACK=true
+3. **Set Up Environment Variables:**
+   Create a `.env.local` file in the root directory:
+
+   ```
+   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   NEXT_PUBLIC_ENABLE_OFFLINE_LITERTE=true
+   NEXT_PUBLIC_DEFAULT_LANGUAGE=telugu
+   
    ```
 
-4. **Run Development Server:**
-   ```bash
+4. **Launch the Development Server:**
+
+   ```
    npm run dev
+   
    ```
-   Open `http://localhost:3000` in your browser to view the application interface.
 
----
+   Navigate to `http://localhost:3000` to interact with the application.
 
-## 📱 Regional Language Support
+## 👤 Author & Maintainer
 
-Ustaad is built natively for India's diverse workforce:
-* **Telugu (తెలుగు)** — Full speech & visual reasoning support
-* **Hindi (हिंदी)** — Full speech & visual reasoning support
-* **English (Indian Accent)** — Full speech & visual reasoning support
+* **Developer:** Star Rock
 
----
+* **GitHub:** [@starrock7205-pixel](https://github.com/starrock7205-pixel)
+
+* **Email:** [starrock7205@gmail.com](mailto:starrock7205@gmail.com)
 
 ## 📄 License & Attribution
 
-This project is open-sourced under the **MIT License**. Built for the **Startup Buildathon India 2026**.
-
----
-
-<p center>
-  Made with ❤️ in Hyderabad for India's Skilled Vocational Workers.
-</p>
+Distributed under the **MIT License**. Created for the **Startup Buildathon India 2026**.
